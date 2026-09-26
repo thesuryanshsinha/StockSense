@@ -7,6 +7,6 @@ s_dash = Blueprint('s_dash',__name__)
 
 @s_dash.route("/pending_transfers")
 @login_required
-@role_needed('inventory_manager')
+@role_needed('warehouse_staff')
 def pending_transfer():
     return InternalTransfer.query.filter_by(status='waiting').count()
