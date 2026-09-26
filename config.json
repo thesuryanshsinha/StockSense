@@ -1,0 +1,8 @@
+{
+    "info":
+    {
+        "local_db_url":"sqlite:///master.sqlite3",
+        "secret-key" : "rZEJJsQSYtcfTEKFcraU98cGpgN7T-LEIsJGhwbsU_o",
+        "days_to_remomber": 5
+    }
+}
