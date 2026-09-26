@@ -13,10 +13,10 @@ def create_app():
     bcrypt.init_app(app)
     login_manager.init_app(app)
     
-    # with app.app_context():
+    with app.app_context():
 
-        # db.create_all()
-        # db.session.commit()
+        db.create_all()
+        db.session.commit()
 
         # user =  Users.query.filter_by(email='admin@gmail.com').first()
 
@@ -34,7 +34,7 @@ def create_app():
 
         #         db.session.commit()
 
-    # from app.auth.routes import auth_bp
+    from app.auth.routes import auth_bp
     # from app.api.bookings import bookings_api
     # from app.api.users import users_api
     # from app.api.treks import treks_api
@@ -43,7 +43,7 @@ def create_app():
     # from app.dashboard.staff_dashboard import staff_bp
     # from app.dashboard.trekker_dashboard import trekker_bp
 
-    # app.register_blueprint(auth_bp)
+    app.register_blueprint(auth_bp)
     # app.register_blueprint(dash_bp, url_prefix='/dashboard')
     # app.register_blueprint(admin_bp, url_prefix='/dashboard/admin')
     # app.register_blueprint(staff_bp, url_prefix='/dashboard/staff')
@@ -53,14 +53,14 @@ def create_app():
     # app.register_blueprint(users_api, url_prefix='/api/users')
     # app.register_blueprint(treks_api, url_prefix='/api/treks')
 
-    # @app.errorhandler(401)
-    # @app.errorhandler(404)
-    # def unauthorised_access_or_page_unavailable(_):
-    #     return redirect(url_for('auth.login')) 
+    @app.errorhandler(401)
+    @app.errorhandler(404)
+    def unauthorised_access_or_page_unavailable(_):
+        return redirect(url_for('auth.login')) 
     
-    # @app.errorhandler(403)
-    # def wrong_dashboard(_):
-    #     return redirect(url_for('dash.dashboard'))
+    @app.errorhandler(403)
+    def wrong_dashboard(_):
+        return redirect(url_for('dash.dashboard'))
     
     # for rule in app.url_map.iter_rules():
     #     print(rule.endpoint, rule)
