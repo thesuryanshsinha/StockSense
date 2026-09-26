@@ -15,24 +15,24 @@ def create_app():
     
     # with app.app_context():
 
-        db.create_all()
-        db.session.commit()
+        # db.create_all()
+        # db.session.commit()
 
-        user =  Users.query.filter_by(email='admin@gmail.com').first()
+        # user =  Users.query.filter_by(email='admin@gmail.com').first()
 
-        if not user:
-            password = bcrypt.generate_password_hash('test')
-            db.session.add(Users(user_id=1,name='Admin',role='admin',email='admin@gmail.com',password=password))
-            scripts = ["app/db/triggers_and_fts.sql","app/db/dummy_data.sql"]
-            # scripts = ["app/db/dummy_data.sql"]
-            for i in scripts:
-                with open(i,'r') as f:
-                    sql = f.read()
-                    conn = db.engine.raw_connection()
-                    conn.executescript(sql)
-                    conn.commit()
+        # if not user:
+        #     password = bcrypt.generate_password_hash('test')
+        #     db.session.add(Users(user_id=1,name='Admin',role='admin',email='admin@gmail.com',password=password))
+        #     scripts = ["app/db/triggers_and_fts.sql","app/db/dummy_data.sql"]
+        #     # scripts = ["app/db/dummy_data.sql"]
+        #     for i in scripts:
+        #         with open(i,'r') as f:
+        #             sql = f.read()
+        #             conn = db.engine.raw_connection()
+        #             conn.executescript(sql)
+        #             conn.commit()
 
-                db.session.commit()
+        #         db.session.commit()
 
     # from app.auth.routes import auth_bp
     # from app.api.bookings import bookings_api

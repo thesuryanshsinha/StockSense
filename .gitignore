@@ -289,3 +289,4 @@ build/
 
 
 *.temp
+backend/*firebase-adminsdk*.json
